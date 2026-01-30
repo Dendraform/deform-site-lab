@@ -2,230 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DENDRAFORM – Home</title>
+  <title>DEFORM – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-      font-family: Arial, sans-serif;
-      background: #16181E;
-      color: #FFBC00;
-      overflow-x: hidden;
-    }
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; overflow:hidden; font-family: Arial, sans-serif; background:#16181E; color:#FFBC00; }
 
-    /* ================= HEADER ================= */
-    header {
+    /* Навигация */
+    header.navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 32px;
-      z-index: 1000;
-      background: rgba(22,24,30,0.85);
-      backdrop-filter: blur(5px);
+      top:0; left:0; width:100%;
+      display:flex; justify-content: space-between; align-items:center;
+      padding:20px 40px;
+      background: rgba(22,24,30,0.8);
+      z-index: 100;
     }
-
-    .logo {
-      font-weight: 900;
-      font-size: 20px;
-      letter-spacing: 0.15em;
+    header.navbar .logo { font-weight: bold; font-size: 22px; letter-spacing: 0.1em; }
+    header.navbar nav a {
+      color:#FFBC00; text-decoration:none; margin-left:24px; font-weight:bold; font-size:16px;
+      transition: color 0.3s;
     }
+    header.navbar nav a:hover { color:#fff; }
 
-    nav a {
-      color: #FFBC00;
-      text-decoration: none;
-      margin-left: 32px;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      transition: opacity 0.3s ease;
-    }
-
-    nav a:hover {
-      opacity: 0.7;
-    }
-
-    /* ================= SLIDES ================= */
-    .slide {
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    /* Секции fullpage */
+    .section {
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      scroll-snap-align: start;
       position: relative;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.8s ease, opacity 0.8s ease;
+      overflow:hidden;
+    }
+    .sections-container {
+      height:100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
     }
 
-    .slide-content {
-      text-align: center;
-      background: rgba(22,24,30,0.4);
-      padding: 20px 40px;
-      border-radius: 4px;
-      transition: transform 0.8s ease, opacity 0.8s ease;
+    /* Изображения */
+    .section img {
+      width: 70%;
+      max-width: 800px;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .section:hover img {
+      transform: scale(1.05);
     }
 
-    .slide-content h1 {
-      margin-bottom: 12px;
+    /* Текст */
+    .section h1 {
+      margin-top: 24px;
       font-size: 36px;
+      font-weight: 400;
+      color:#FFBC00;
+      letter-spacing: 0.1em;
     }
 
-    .slide-content p {
-      margin-bottom: 16px;
-      font-size: 16px;
+    .section p {
+      margin-top: 12px;
+      font-size: 18px;
+      color:#FFBC00;
+      opacity:0.8;
+      max-width: 600px;
+      text-align: center;
     }
 
-    .slide-content a {
-      display: inline-block;
-      padding: 8px 20px;
-      background: #FFBC00;
-      color: #16181E;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 4px;
-      transition: background 0.3s ease;
-    }
-
-    .slide-content a:hover {
-      background: #e6ac00;
-    }
-
-    /* ================= ARROWS ================= */
-    .arrow-container {
+    /* Стрелки прокрутки */
+    .scroll-arrow {
       position: fixed;
-      right: 24px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      z-index: 900;
-    }
-
-    .arrow {
-      width: 40px;
-      height: 40px;
-      background: rgba(255,188,0,0.2);
-      color: #FFBC00;
-      font-size: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      right: 40px;
+      bottom: 40px;
+      font-size: 36px;
       cursor: pointer;
-      border-radius: 50%;
-      user-select: none;
-      transition: background 0.3s ease;
+      color:#FFBC00;
+      transition: color 0.3s;
+      z-index: 100;
     }
+    .scroll-arrow:hover { color:#fff; }
 
-    .arrow:hover {
-      background: rgba(255,188,0,0.5);
-    }
-
-    /* ================= MEDIA ================= */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav a {
-        margin-left: 0;
-        margin-top: 8px;
-      }
-      .slide-content h1 {
-        font-size: 28px;
-      }
-      .slide-content p {
-        font-size: 14px;
-      }
-    }
+    .scroll-arrow.up { bottom: 80px; }
   </style>
 </head>
 <body>
 
-<header>
+<header class="navbar">
   <div class="logo">DENDRAFORM</div>
   <nav>
-    <a href="projects.html">Projects</a>
+    <a href="#projects">Projects</a>
     <a href="#about">About</a>
   </nav>
 </header>
 
-<!-- Слайды -->
-<div class="slide" style="background-image: url('images/object-01-01.jpg');">
-  <div class="slide-content">
+<div class="sections-container">
+
+  <section class="section" id="slide1">
+    <img src="images/object-01-01.jpg" alt="Object 01">
     <h1>Object 01</h1>
-    <p>Unique handcrafted item</p>
-    <a href="object-01.html">Open</a>
-  </div>
-</div>
+    <p>Unique interior object from natural forms</p>
+  </section>
 
-<div class="slide" style="background-image: url('images/object-02-01.jpg');">
-  <div class="slide-content">
+  <section class="section" id="slide2">
+    <img src="images/object-02-01.jpg" alt="Object 02">
     <h1>Object 02</h1>
-    <p>Another piece of art</p>
-    <a href="object-02.html">Open</a>
-  </div>
-</div>
+    <p>Another creation in our collection</p>
+  </section>
 
-<div class="slide" style="background-image: url('images/some-illustration.jpg');">
-  <div class="slide-content">
+  <section class="section" id="slide3">
+    <img src="images/some-illustration.jpg" alt="Illustration 01">
     <h1>Illustration 01</h1>
-    <p>Hand-drawn illustration</p>
-    <a href="illustration-01.html">Open</a>
-  </div>
+    <p>Creative illustration work</p>
+  </section>
+
+  <section class="section" id="slide4">
+    <img src="images/some-uiux.jpg" alt="UI/UX 01">
+    <h1>UI/UX 01</h1>
+    <p>UI/UX projects showcase</p>
+  </section>
+
 </div>
 
 <!-- Стрелки -->
-<div class="arrow-container">
-  <div class="arrow" id="arrowUp">&#9650;</div>
-  <div class="arrow" id="arrowDown">&#9660;</div>
-</div>
+<div class="scroll-arrow up" id="arrowUp">▲</div>
+<div class="scroll-arrow down" id="arrowDown">▼</div>
 
 <script>
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  let current = 0;
+  const container = document.querySelector('.sections-container');
+  const arrowUp = document.getElementById('arrowUp');
+  const arrowDown = document.getElementById('arrowDown');
 
-  function showSlide(index){
-    if(index < 0) index = 0;
-    if(index >= slides.length) index = slides.length - 1;
-
-    slides.forEach((slide,i)=>{
-      if(i < index) {
-        slide.style.transform = 'translateY(-100vh)';
-        slide.style.opacity = '0.5';
-      } else if(i > index){
-        slide.style.transform = 'translateY(100vh)';
-        slide.style.opacity = '0.5';
-      } else {
-        slide.style.transform = 'translateY(0)';
-        slide.style.opacity = '1';
-      }
-    });
-    current = index;
-  }
-
-  document.getElementById('arrowDown').addEventListener('click', ()=> showSlide(current+1));
-  document.getElementById('arrowUp').addEventListener('click', ()=> showSlide(current-1));
-
-  // Прокрутка колесиком мыши
-  let scrollDebounce = false;
-  window.addEventListener('wheel', e=>{
-    if(scrollDebounce) return;
-    scrollDebounce = true;
-    setTimeout(()=>scrollDebounce=false, 800); // задержка между скроллами
-    if(e.deltaY>0) showSlide(current+1);
-    if(e.deltaY<0) showSlide(current-1);
+  arrowDown.addEventListener('click', () => {
+    container.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
   });
-
-  // Инициализация
-  showSlide(0);
+  arrowUp.addEventListener('click', () => {
+    container.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+  });
 </script>
 
 </body>
