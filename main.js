@@ -19,13 +19,10 @@ function show(next) {
   }, 900);
 }
 
-window.addEventListener('wheel', e => {
-  if (e.deltaY > 0) {
-    show(index + 1); // вниз → экран едет вверх
-  } else {
-    show(index - 1);
-  }
-});
+window.addEventListener('wheel', (e) => {
+  e.preventDefault();
+}, { passive: false });
 
 document.querySelector('.arrow.down').onclick = () => show(index + 1);
 document.querySelector('.arrow.up').onclick = () => show(index - 1);
+
