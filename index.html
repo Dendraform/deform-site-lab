@@ -1,117 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>DEFORM – Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>DEFORM – Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #16181E;
+  color: #FFBC00;
+  font-family: Arial, sans-serif;
+}
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #16181E;
-      color: #FFBC00;
-    }
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-    }
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 8px;
-    }
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%; /* все слайды вне экрана справа */
+  transition: all 0.7s ease;
+}
 
-    .hero p {
-      font-size: 20px;
-      opacity: 0.8;
-    }
+.slide.active {
+  left: 0; /* активный слайд виден */
+}
 
-    /* Главная галерея */
-    .main-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      align-items: stretch;
-      padding: 0 12px 40px;
-      max-width: 1600px;
-      margin: 0 auto;
-    }
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .main-gallery .gallery-item {
-      flex: 1 1 45%; /* 2 колонки на десктопе */
-      position: relative;
-      overflow: hidden;
-      border: 3px solid #FFBC00;
-      border-radius: 8px;
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-      cursor: pointer;
-    }
+/* Стрелки */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48px;
+  color: #FFBC00;
+  background: rgba(22,24,30,0.5);
+  padding: 12px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+}
 
-    .main-gallery .gallery-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      transition: transform 0.7s ease;
-    }
-
-    .main-gallery .gallery-item:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 28px rgba(255,188,0,0.3);
-    }
-
-    .main-gallery .gallery-item:hover img {
-      transform: scale(1.06);
-    }
-
-    .main-gallery .caption {
-      position: absolute;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(22,24,30,0.5);
-      padding: 10px 16px;
-      border-radius: 6px;
-      color: #FFBC00;
-      font-size: 18px;
-      font-weight: 600;
-    }
-  </style>
+.arrow-left { left: 20px; }
+.arrow-right { right: 20px; }
+.arrow:hover { background: rgba(22,24,30,0.8); }
+</style>
 </head>
 <body>
 
-<header class="hero">
-  <h1>DEFORM</h1>
-  <p>Авторские предметы интерьера и украшения — крупный визуальный рассказ</p>
-</header>
+<div class="hero">
+  <div class="slider">
+    <div class="slide active">
+      <img src="images/object-01-01.jpg" alt="Object 01">
+    </div>
+    <div class="slide">
+      <img src="images/object-02-01.jpg" alt="Object 02">
+    </div>
+    <div class="slide">
+      <img src="images/some-illustration.jpg" alt="Illustration 01">
+    </div>
+    <div class="slide">
+      <img src="images/some-uiux.jpg" alt="UI/UX 01">
+    </div>
+  </div>
 
-<section class="main-gallery">
+  <div class="arrow arrow-left">&#10094;</div>
+  <div class="arrow arrow-right">&#10095;</div>
+</div>
 
-  <a href="object-01.html" class="gallery-item">
-    <img src="images/object-01-01.jpg" alt="Object 01 Large">
-    <div class="caption">Object 01</div>
-  </a>
+<script>
+const slides = document.querySelectorAll('.slide');
+const left = document.querySelector('.arrow-left');
+const right = document.querySelector('.arrow-right');
+let current = 0;
 
-  <a href="object-02.html" class="gallery-item">
-    <img src="images/object-02-01.jpg" alt="Object 02 Large">
-    <div class="caption">Object 02</div>
-  </a>
+function showSlide(index) {
+  slides.forEach((s, i) => {
+    s.classList.remove('active');
+    if(i === index) s.classList.add('active');
+  });
+}
 
-  <a href="illustration-01.html" class="gallery-item">
-    <img src="images/some-illustration.jpg" alt="Illustration Large">
-    <div class="caption">Illustration 01</div>
-  </a>
+left.addEventListener('click', () => {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+});
 
-  <a href="uiux-01.html" class="gallery-item">
-    <img src="images/some-uiux.jpg" alt="UI/UX Large">
-    <div class="caption">UI/UX 01</div>
-  </a>
+right.addEventListener('click', () => {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+});
 
-</section>
+// Опционально: автопереключение каждые 5 секунд
+// setInterval(() => {
+//   current = (current + 1) % slides.length;
+//   showSlide(current);
+// }, 5000);
+</script>
 
 </body>
 </html>
