@@ -2,148 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DEFORM – Home</title>
+  <title>DEFORM – Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Reset */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { height:100%; overflow:hidden; font-family: Arial, sans-serif; background:#16181E; color:#FFBC00; }
-
-    /* Навигация */
-    header.navbar {
-      position: fixed;
-      top:0; left:0; width:100%;
-      display:flex; justify-content: space-between; align-items:center;
-      padding:20px 40px;
-      background: rgba(22,24,30,0.8);
-      z-index: 100;
-    }
-    header.navbar .logo { font-weight: bold; font-size: 22px; letter-spacing: 0.1em; }
-    header.navbar nav a {
-      color:#FFBC00; text-decoration:none; margin-left:24px; font-weight:bold; font-size:16px;
-      transition: color 0.3s;
-    }
-    header.navbar nav a:hover { color:#fff; }
-
-    /* Секции fullpage */
-    .section {
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      scroll-snap-align: start;
-      position: relative;
-      overflow:hidden;
-    }
-    .sections-container {
-      height:100vh;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-    }
-
-    /* Изображения */
-    .section img {
-      width: 70%;
-      max-width: 800px;
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .section:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Текст */
-    .section h1 {
-      margin-top: 24px;
-      font-size: 36px;
-      font-weight: 400;
-      color:#FFBC00;
-      letter-spacing: 0.1em;
-    }
-
-    .section p {
-      margin-top: 12px;
-      font-size: 18px;
-      color:#FFBC00;
-      opacity:0.8;
-      max-width: 600px;
-      text-align: center;
-    }
-
-    /* Стрелки прокрутки */
-    .scroll-arrow {
-      position: fixed;
-      right: 40px;
-      bottom: 40px;
-      font-size: 36px;
-      cursor: pointer;
-      color:#FFBC00;
-      transition: color 0.3s;
-      z-index: 100;
-    }
-    .scroll-arrow:hover { color:#fff; }
-
-    .scroll-arrow.up { bottom: 80px; }
-  </style>
 </head>
 <body>
 
-<header class="navbar">
+<header class="main-header">
   <div class="logo">DENDRAFORM</div>
-  <nav>
+  <nav class="main-nav">
     <a href="#projects">Projects</a>
     <a href="#about">About</a>
   </nav>
 </header>
 
-<div class="sections-container">
+<div class="scroll-container">
 
-  <section class="section" id="slide1">
-    <img src="images/object-01-01.jpg" alt="Object 01">
-    <h1>Object 01</h1>
-    <p>Unique interior object from natural forms</p>
+  <section class="scroll-section" style="background-image: url('images/object-01-01.jpg');">
+    <div class="overlay">
+      <h1>Object 01</h1>
+      <a href="object-01.html" class="btn-open">Open</a>
+    </div>
   </section>
 
-  <section class="section" id="slide2">
-    <img src="images/object-02-01.jpg" alt="Object 02">
-    <h1>Object 02</h1>
-    <p>Another creation in our collection</p>
+  <section class="scroll-section" style="background-image: url('images/object-02-01.jpg');">
+    <div class="overlay">
+      <h1>Object 02</h1>
+      <a href="object-02.html" class="btn-open">Open</a>
+    </div>
   </section>
 
-  <section class="section" id="slide3">
-    <img src="images/some-illustration.jpg" alt="Illustration 01">
-    <h1>Illustration 01</h1>
-    <p>Creative illustration work</p>
+  <section class="scroll-section" style="background-image: url('images/some-illustration.jpg');">
+    <div class="overlay">
+      <h1>Illustration 01</h1>
+      <a href="illustration-01.html" class="btn-open">Open</a>
+    </div>
   </section>
 
-  <section class="section" id="slide4">
-    <img src="images/some-uiux.jpg" alt="UI/UX 01">
-    <h1>UI/UX 01</h1>
-    <p>UI/UX projects showcase</p>
+  <section class="scroll-section" style="background-image: url('images/some-uiux.jpg');">
+    <div class="overlay">
+      <h1>UI/UX 01</h1>
+      <a href="uiux-01.html" class="btn-open">Open</a>
+    </div>
   </section>
 
 </div>
 
-<!-- Стрелки -->
-<div class="scroll-arrow up" id="arrowUp">▲</div>
-<div class="scroll-arrow down" id="arrowDown">▼</div>
+<!-- Стрелки прокрутки -->
+<div class="scroll-arrows">
+  <div class="arrow up">↑</div>
+  <div class="arrow down">↓</div>
+</div>
 
-<script>
-  const container = document.querySelector('.sections-container');
-  const arrowUp = document.getElementById('arrowUp');
-  const arrowDown = document.getElementById('arrowDown');
-
-  arrowDown.addEventListener('click', () => {
-    container.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-  });
-  arrowUp.addEventListener('click', () => {
-    container.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-  });
-</script>
-
+<script src="main.js"></script>
 </body>
 </html>
