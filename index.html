@@ -1,122 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>DEFORM – Home</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background: #16181E;
-  color: #FFBC00;
-  font-family: Arial, sans-serif;
-}
+  <meta charset="UTF-8">
+  <title>DEFORM – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Сброс */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
+    html, body {
+      height: 100%;
+      overflow: hidden; /* запрет скролла обычного */
+      font-family: Arial, sans-serif;
+      background: #16181E;
+      color: #FFBC00;
+    }
 
-.slider {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+    /* Контейнер слайдов */
+    .slides-container {
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
 
-.slide {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 100%; /* все слайды вне экрана справа */
-  transition: all 0.7s ease;
-}
+    /* Каждый слайд занимает весь экран */
+    .slide {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.8s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
-.slide.active {
-  left: 0; /* активный слайд виден */
-}
+    /* Текст поверх слайда */
+    .slide-content {
+      background: rgba(22,24,30,0.5);
+      padding: 20px 40px;
+      text-align: center;
+    }
 
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .slide-content h1 {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
 
-/* Стрелки */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 48px;
-  color: #FFBC00;
-  background: rgba(22,24,30,0.5);
-  padding: 12px;
-  cursor: pointer;
-  user-select: none;
-  z-index: 10;
-}
+    .slide-content p {
+      font-size: 18px;
+      opacity: 0.85;
+    }
 
-.arrow-left { left: 20px; }
-.arrow-right { right: 20px; }
-.arrow:hover { background: rgba(22,24,30,0.8); }
-</style>
+    /* Стрелки навигации */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: #FFBC00;
+      cursor: pointer;
+      user-select: none;
+      padding: 8px 12px;
+      background: rgba(22,24,30,0.5);
+    }
+
+    .arrow.left { left: 20px; }
+    .arrow.right { right: 20px; }
+
+    @media(max-width:768px) {
+      .slide-content h1 { font-size: 32px; }
+      .slide-content p { font-size: 16px; }
+      .arrow { font-size: 32px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="slider">
-    <div class="slide active">
-      <img src="images/object-01-01.jpg" alt="Object 01">
+<div class="slides-container">
+  <div class="slide" style="background-image: url('images/object-01-01.jpg');" data-index="0">
+    <div class="slide-content">
+      <h1>Object 01</h1>
+      <p>Objects</p>
     </div>
-    <div class="slide">
-      <img src="images/object-02-01.jpg" alt="Object 02">
+  </div>
+  <div class="slide" style="background-image: url('images/object-02-01.jpg');" data-index="1">
+    <div class="slide-content">
+      <h1>Object 02</h1>
+      <p>Objects</p>
     </div>
-    <div class="slide">
-      <img src="images/some-illustration.jpg" alt="Illustration 01">
+  </div>
+  <div class="slide" style="background-image: url('images/some-illustration.jpg');" data-index="2">
+    <div class="slide-content">
+      <h1>Illustration 01</h1>
+      <p>Illustration</p>
     </div>
-    <div class="slide">
-      <img src="images/some-uiux.jpg" alt="UI/UX 01">
+  </div>
+  <div class="slide" style="background-image: url('images/some-uiux.jpg');" data-index="3">
+    <div class="slide-content">
+      <h1>UI/UX 01</h1>
+      <p>UI/UX</p>
     </div>
   </div>
 
-  <div class="arrow arrow-left">&#10094;</div>
-  <div class="arrow arrow-right">&#10095;</div>
+  <!-- Стрелки -->
+  <div class="arrow left">&#10094;</div>
+  <div class="arrow right">&#10095;</div>
 </div>
 
 <script>
-const slides = document.querySelectorAll('.slide');
-const left = document.querySelector('.arrow-left');
-const right = document.querySelector('.arrow-right');
-let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const arrowLeft = document.querySelector('.arrow.left');
+  const arrowRight = document.querySelector('.arrow.right');
+  let currentIndex = 0;
 
-function showSlide(index) {
-  slides.forEach((s, i) => {
-    s.classList.remove('active');
-    if(i === index) s.classList.add('active');
+  function updateSlides() {
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateY(${(index - currentIndex) * 100}%)`;
+    });
+  }
+
+  // Навигация стрелками
+  arrowLeft.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateSlides();
   });
-}
 
-left.addEventListener('click', () => {
-  current = (current - 1 + slides.length) % slides.length;
-  showSlide(current);
-});
+  arrowRight.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSlides();
+  });
 
-right.addEventListener('click', () => {
-  current = (current + 1) % slides.length;
-  showSlide(current);
-});
+  // Скролл мышью
+  let scrollTimeout;
+  window.addEventListener('wheel', e => {
+    if(scrollTimeout) return;
+    if(e.deltaY > 0) currentIndex = (currentIndex + 1) % slides.length;
+    else currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateSlides();
+    scrollTimeout = setTimeout(() => scrollTimeout = null, 800); // блокируем резкое скролл-прокручивание
+  });
 
-// Опционально: автопереключение каждые 5 секунд
-// setInterval(() => {
-//   current = (current + 1) % slides.length;
-//   showSlide(current);
-// }, 5000);
+  // Инициализация
+  updateSlides();
 </script>
 
 </body>
