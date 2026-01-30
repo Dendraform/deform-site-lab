@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* запрещаем горизонтальную прокрутку */
+  width: 100%;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -83,6 +89,7 @@ body {
   font-size: 14px;
   color: #FFBC00;
 }
+
 
 
 
