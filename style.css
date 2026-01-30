@@ -15,43 +15,75 @@ body {
   padding: 40px 20px;
 }
 
+/* Projects Grid */
 .projects-grid {
   display: grid;
-  gap: 24px;
-  padding: 20px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-.projects-grid a.project-card {
+
+/* Project Card */
+.project-card {
   display: block;
-  border: 1px solid #FFBC00;
-  border-radius: 6px;
-  overflow: hidden;
+  background: #16181E; /* тёмный фон карточки */
+  color: #FFBC00; /* желтый текст */
   text-decoration: none;
-  color: #FFBC00;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #FFBC00;
+  overflow: hidden;
+  border-radius: 8px;
+  transform: translateZ(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
 }
 
-.projects-grid a.project-card img {
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 32px rgba(255, 188, 0, 0.3);
+}
+
+/* Project Image */
+.project-image {
+  overflow: hidden;
+}
+
+.project-image img {
   width: 100%;
-  height: auto;
   display: block;
-  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.projects-grid a.project-card h3 {
-  margin: 12px;
+.project-card:hover .project-image img {
+  transform: scale(1.08); /* лёгкое увеличение картинки при наведении */
+}
+
+/* Project Info */
+.project-info {
+  padding: 16px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.project-card:hover .project-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-info h3 {
+  margin: 8px 0 4px;
   font-size: 18px;
 }
 
-.projects-grid a.project-card p {
-  margin: 0 12px 12px;
+.project-info p {
+  margin: 0;
   font-size: 14px;
-  opacity: 0.8;
+  color: #FFBC00;
 }
 
-.projects-grid a.project-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(255,188,0,0.3);
-}
+
 
 
