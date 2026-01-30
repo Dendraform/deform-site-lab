@@ -1,35 +1,68 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".scroll-section");
-  const arrows = { up: document.querySelector(".arrow.up"), down: document.querySelector(".arrow.down") };
-  let current = 0;
-  let scrolling = false;
-
-  function updateSections() {
-    sections.forEach((sec, i) => {
-      sec.classList.remove("prev","next","active");
-      if(i < current) sec.classList.add("prev");
-      else if(i > current) sec.classList.add("next");
-      else sec.classList.add("active");
+document.addEventListener('DOMContentLoaded', function() {
+    const imageItems = document.querySelectorAll('.image-item');
+    let currentIndex = 0;
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Функция для смены изображений
+    function changeImage(direction) {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        
+        // Убираем активный класс с текущего изображения
+        imageItems[currentIndex].classList.remove('active');
+        imageItems[currentIndex].classList.add('exit');
+        
+        // Определяем индекс следующего изображения
+        if (direction === 'down') {
+            currentIndex = (currentIndex + 1) % imageItems.length;
+        } else {
+            currentIndex = (currentIndex - 1 + imageItems.length) % imageItems.length;
+        }
+        
+        // Показываем следующее изображение
+        setTimeout(() => {
+            // Убираем класс exit со всех изображений
+            imageItems.forEach(item => {
+                item.classList.remove('exit');
+            });
+            
+            // Активируем новое изображение
+            imageItems[currentIndex].classList.add('active');
+            
+            // Сбрасываем флаг скроллинга
+            setTimeout(() => {
+                isScrolling = false;
+            }, 300);
+        }, 500);
+    }
+    
+    // Обработчик колеса мыши
+    window.addEventListener('wheel', function(e) {
+        // Предотвращаем слишком быструю смену
+        clearTimeout(scrollTimeout);
+        
+        scrollTimeout = setTimeout(() => {
+            if (e.deltaY > 0) {
+                // Скролл вниз
+                changeImage('down');
+            } else {
+                // Скролл вверх
+                changeImage('up');
+            }
+        }, 100);
     });
-  }
-
-  function scrollToSection(index) {
-    if(index < 0) index = 0;
-    if(index >= sections.length) index = sections.length-1;
-    if(scrolling || index === current) return;
-    scrolling = true;
-    current = index;
-    updateSections();
-    setTimeout(()=> scrolling = false, 800); // соответствует transition
-  }
-
-  // колесо мыши
-  window.addEventListener("wheel", e => {
-    if(e.deltaY > 0) scrollToSection(current+1);
-    else scrollToSection(current-1);
-  });
-
-  // стрелки
-  arrows.down.addEventListener("click", ()=>scrollToSection(current+1));
-  arrows.up.addEventListener("click", ()=>scrollToSection(current-1));
+    
+    // Обработчик клавиш для навигации
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown') {
+            changeImage('down');
+        } else if (e.key === 'ArrowUp') {
+            changeImage('up');
+        }
+    });
+    
+    // Активируем первое изображение
+    imageItems[0].classList.add('active');
 });
