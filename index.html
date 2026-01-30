@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scroll Animation - Alex Bait Style</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>Dendraform — Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Секция с изображениями -->
-        <section class="gallery">
-    <div class="image-item active">
-        <img src="images/project-01.jpg" alt="Project 01">
-        <div class="project-info">
-            <h3>Project 01</h3>
-            <p>Description</p>
-        </div>
-    </div>
 
-    <div class="image-item">
-        <img src="images/project-02.jpg" alt="Project 02">
-        <div class="project-info">
-            <h3>Project 02</h3>
-            <p>Description</p>
-        </div>
-    </div>
+<header class="topbar">
+  <div class="logo">dendraform</div>
+  <nav class="menu">
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
 
-    <div class="image-item">
-        <img src="images/project-03.jpg" alt="Project 03">
-        <div class="project-info">
-            <h3>Project 03</h3>
-            <p>Description</p>
-        </div>
+<section class="gallery">
+
+  <div class="image-item active">
+    <img src="images/object-01-01.jpg" alt="Object 01">
+    <div class="project-info">
+      <h3>Object 01</h3>
+      <p>Objects</p>
     </div>
+  </div>
+
+  <div class="image-item">
+    <img src="images/object-02-01.jpg" alt="Object 02">
+    <div class="project-info">
+      <h3>Object 02</h3>
+      <p>Objects</p>
+    </div>
+  </div>
+
+  <div class="image-item">
+    <img src="images/object-03-01.jpg" alt="Object 03">
+    <div class="project-info">
+      <h3>Object 03</h3>
+      <p>Objects</p>
+    </div>
+  </div>
+
 </section>
-        
-        <!-- Контент для создания высоты страницы -->
-        <section class="content">
-            <h2>Прокрутите вниз, чтобы увидеть эффект</h2>
-            <div class="scroll-hint">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </section>
-    </div>
-    
-    <script src="script.js"></script>
+
+<div class="scroll-arrows">
+  <div class="arrow up">↑</div>
+  <div class="arrow down">↓</div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
