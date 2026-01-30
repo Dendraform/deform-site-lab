@@ -5,95 +5,113 @@
   <title>DEFORM – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+
   <style>
-    /* ===== RESET ===== */
-    * { box-sizing: border-box; margin:0; padding:0; }
-    html, body { margin:0; padding:0; overflow-x:hidden; width:100%; }
-    body { background:#16181E; color:#FFBC00; font-family:Arial, sans-serif; text-align:center; }
-
-    /* ===== HEADER ===== */
-    header.hero {
-      min-height: 100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      padding:40px 20px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #16181E;
+      color: #FFBC00;
     }
 
-    header.hero h1 { font-size: 48px; margin-bottom: 16px; }
-    header.hero p { font-size: 20px; opacity:0.8; max-width: 600px; }
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
 
-    /* ===== MAIN SLIDER ===== */
-    .slider-container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 40px auto;
-      overflow: hidden;
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      opacity: 0.8;
+    }
+
+    /* Главная галерея */
+    .main-gallery {
       display: flex;
-      gap: 24px;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: stretch;
+      padding: 0 12px 40px;
+      max-width: 1600px;
+      margin: 0 auto;
     }
 
-    .slide {
-      flex: 0 0 100%;
-      scroll-snap-align: start;
-      border: 1px solid #FFBC00;
-      border-radius: 8px;
+    .main-gallery .gallery-item {
+      flex: 1 1 45%; /* 2 колонки на десктопе */
+      position: relative;
       overflow: hidden;
+      border: 3px solid #FFBC00;
+      border-radius: 8px;
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       cursor: pointer;
     }
 
-    .slide img {
+    .main-gallery .gallery-item img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.5s ease;
+      object-fit: cover;
+      transition: transform 0.7s ease;
     }
 
-    .slide:hover { transform: scale(1.03); box-shadow: 0 16px 32px rgba(255,188,0,0.3); }
-    .slide:hover img { transform: scale(1.05); }
+    .main-gallery .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 28px rgba(255,188,0,0.3);
+    }
 
-    /* ===== BACK BUTTON ===== */
-    .back-link {
-      display: inline-block;
-      margin: 40px auto;
-      padding: 10px 20px;
-      background: #FFBC00;
-      color: #16181E;
-      text-decoration: none;
+    .main-gallery .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .main-gallery .caption {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(22,24,30,0.5);
+      padding: 10px 16px;
       border-radius: 6px;
-      font-weight: bold;
-      transition: background 0.3s ease;
+      color: #FFBC00;
+      font-size: 18px;
+      font-weight: 600;
     }
-    .back-link:hover { background:#e6ac00; }
   </style>
 </head>
 <body>
 
 <header class="hero">
   <h1>DEFORM</h1>
-  <p>Авторские предметы интерьера и украшения из природных форм</p>
+  <p>Авторские предметы интерьера и украшения — крупный визуальный рассказ</p>
 </header>
 
-<section class="slider-container">
-  <a href="object-01.html" class="slide">
-    <img src="images/object-01-01.jpg" alt="Object 01">
-  </a>
-  <a href="object-02.html" class="slide">
-    <img src="images/object-02-01.jpg" alt="Object 02">
-  </a>
-  <a href="illustration-01.html" class="slide">
-    <img src="images/some-illustration.jpg" alt="Illustration 01">
-  </a>
-  <a href="uiux-01.html" class="slide">
-    <img src="images/some-uiux.jpg" alt="UI/UX 01">
-  </a>
-</section>
+<section class="main-gallery">
 
-<a href="projects.html" class="back-link">→ View All Projects</a>
+  <a href="object-01.html" class="gallery-item">
+    <img src="images/object-01-01.jpg" alt="Object 01 Large">
+    <div class="caption">Object 01</div>
+  </a>
+
+  <a href="object-02.html" class="gallery-item">
+    <img src="images/object-02-01.jpg" alt="Object 02 Large">
+    <div class="caption">Object 02</div>
+  </a>
+
+  <a href="illustration-01.html" class="gallery-item">
+    <img src="images/some-illustration.jpg" alt="Illustration Large">
+    <div class="caption">Illustration 01</div>
+  </a>
+
+  <a href="uiux-01.html" class="gallery-item">
+    <img src="images/some-uiux.jpg" alt="UI/UX Large">
+    <div class="caption">UI/UX 01</div>
+  </a>
+
+</section>
 
 </body>
 </html>
