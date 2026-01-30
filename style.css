@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #16181E;
+  color: #FFBC00;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.header {
+  padding: 40px 20px;
+}
+
+.projects-grid {
+  display: grid;
+  gap: 24px;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
