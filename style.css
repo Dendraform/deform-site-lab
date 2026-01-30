@@ -1,13 +1,15 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* запрещаем горизонтальную прокрутку */
-  width: 100%;
-}
+/* ==================== RESET ==================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* убираем горизонтальную прокрутку */
+  width: 100%;
 }
 
 body {
@@ -17,11 +19,12 @@ body {
   text-align: center;
 }
 
+/* ==================== HEADER ==================== */
 .header {
   padding: 40px 20px;
 }
 
-/* Projects Grid */
+/* ==================== PROJECTS GRID ==================== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -31,11 +34,11 @@ body {
   margin: 0 auto;
 }
 
-/* Project Card */
+/* ==================== PROJECT CARD ==================== */
 .project-card {
   display: block;
   background: #16181E; /* тёмный фон карточки */
-  color: #FFBC00; /* желтый текст */
+  color: #FFBC00;
   text-decoration: none;
   border: 1px solid #FFBC00;
   overflow: hidden;
@@ -50,22 +53,24 @@ body {
   box-shadow: 0 16px 32px rgba(255, 188, 0, 0.3);
 }
 
-/* Project Image */
+/* ==================== PROJECT IMAGE ==================== */
 .project-image {
   overflow: hidden;
 }
 
 .project-image img {
   width: 100%;
+  max-width: 100%; /* не даём картинке вылезти */
+  height: auto;
   display: block;
   transition: transform 0.5s ease;
 }
 
 .project-card:hover .project-image img {
-  transform: scale(1.08); /* лёгкое увеличение картинки при наведении */
+  transform: scale(1.08); /* лёгкое увеличение при наведении */
 }
 
-/* Project Info */
+/* ==================== PROJECT INFO ==================== */
 .project-info {
   padding: 16px;
   text-align: center;
@@ -90,7 +95,22 @@ body {
   color: #FFBC00;
 }
 
+/* ==================== IMAGE & CONTAINER FIX ==================== */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
+/* ==================== OPTIONAL: SLIDER CONTAINER ==================== */
+.slider-container {
+  max-width: 100%;
+  overflow: hidden; /* чтобы слайды не вылезали */
+}
 
-
-
+.slider-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
