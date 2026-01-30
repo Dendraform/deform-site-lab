@@ -1,121 +1,108 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* запрет стандартного скролла */
-  height: 100%;
-  font-family: Arial, sans-serif;
-  background: #16181E;
-  color: #FFBC00;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Шапка */
-.main-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  z-index: 1000;
-  background: rgba(22,24,30,0.5);
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
 }
 
-.main-header .logo {
-  font-weight: bold;
-  font-size: 22px;
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 300vh; /* Высокая страница для скролла */
 }
 
-.main-header .main-nav a {
-  margin-left: 24px;
-  color: #FFBC00;
-  text-decoration: none;
-  font-weight: bold;
+.gallery {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Секции */
-.scroll-section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.8s ease, opacity 0.8s ease;
-  opacity: 0;
-  z-index: 0;
+.image-item {
+    position: absolute;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(100vh); /* Начальная позиция - за пределами экрана */
+    transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                opacity 0.5s ease;
+    will-change: transform, opacity;
 }
 
-.scroll-section.active {
-  opacity: 1;
-  z-index: 1;
-  transform: translateY(0);
+.image-item.active {
+    opacity: 1;
+    transform: translateY(0); /* Активное изображение по центру */
 }
 
-.scroll-section.prev {
-  transform: translateY(-100%);
+.image-item.exit {
+    opacity: 0;
+    transform: translateY(-100vh); /* Выход вверх */
 }
 
-.scroll-section.next {
-  transform: translateY(100%);
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-/* Overlay для текста */
-.scroll-section .overlay {
-  text-align: center;
-  background: rgba(22,24,30,0.5);
-  padding: 20px 40px;
-  border-radius: 8px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+.project-info {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 10;
 }
 
-.scroll-section.active .overlay {
-  opacity: 1;
-  transform: translateY(0);
+.project-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
-/* Заголовки и кнопки */
-.scroll-section h1 {
-  font-size: 48px;
-  margin: 0 0 16px;
+.project-info p {
+    font-size: 1.1rem;
+    opacity: 0.8;
 }
 
-.btn-open {
-  display: inline-block;
-  padding: 12px 28px;
-  background: #FFBC00;
-  color: #16181E;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: background 0.3s ease;
+.content {
+    position: absolute;
+    top: 100vh;
+    width: 100%;
+    padding: 100px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.btn-open:hover {
-  background: #e6ac00;
+.content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 300;
 }
 
-/* Стрелки */
-.scroll-arrows {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.scroll-hint {
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    margin-top: 20px;
 }
 
-.arrow {
-  font-size: 28px;
-  cursor: pointer;
-  user-select: none;
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
 }
