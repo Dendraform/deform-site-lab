@@ -1,168 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Projects – DEFORM</title>
+  <title>Dendraform — Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Стили -->
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* === Projects Page Overrides === */
-    body {
-      background: #16181E;
-      color: #FFBC00;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-
-    .header {
-      padding: 60px 20px 40px;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      padding: 0 20px 60px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .project-card {
-      display: block;
-      background: #16181E;
-      color: #FFBC00;
-      text-decoration: none;
-      border: 1px solid #FFBC00;
-      overflow: hidden;
-      border-radius: 8px;
-      transform: translateZ(0);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      position: relative;
-    }
-
-    .project-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 16px 32px rgba(255, 188, 0, 0.3);
-    }
-
-    .project-image {
-      overflow: hidden;
-    }
-
-    .project-image img {
-      width: 100%;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .project-card:hover .project-image img {
-      transform: scale(1.08); /* лёгкое увеличение картинки при наведении */
-    }
-
-    .project-info {
-      padding: 16px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    .project-card:hover .project-info {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .project-info h3 {
-      margin: 8px 0 4px;
-      font-size: 18px;
-    }
-
-    .project-info p {
-      margin: 0;
-      font-size: 14px;
-      color: #FFBC00;
-    }
-
-    /* Back button */
-    .project-back-container {
-      text-align: center;
-      margin: 40px 0;
-    }
-
-    .back-link {
-      display: inline-block;
-      background: #FFBC00;
-      color: #16181E;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .back-link:hover {
-      background: #e6ac00;
-    }
-  </style>
 </head>
-<body>
+<body class="projects-page">
 
-<header class="header">
-  <h1>Projects</h1>
-  <p>Portfolio showcase</p>
+<header class="topbar">
+  <div class="logo">dendraform</div>
+  <nav class="menu">
+    <a href="index.html">Home</a>
+  </nav>
 </header>
 
-<section class="projects-grid">
+<main class="projects-list">
 
-  <a href="object-01.html" class="project-card">
-    <div class="project-image">
-      <img src="images/object-01-01.jpg" alt="Object 01">
-    </div>
-    <div class="project-info">
-      <h3>Object 01</h3>
-      <p>Objects</p>
+  <a href="project-object-01.html" class="project-card">
+    <img src="images/object-cover-01.jpg" alt="Object 01">
+    <div class="project-meta">
+      <h2>Object 01</h2>
+      <span>Objects</span>
     </div>
   </a>
 
-  <a href="object-02.html" class="project-card">
-    <div class="project-image">
-      <img src="images/object-02-01.jpg" alt="Object 02">
-    </div>
-    <div class="project-info">
-      <h3>Object 02</h3>
-      <p>Objects</p>
+  <a href="project-object-02.html" class="project-card">
+    <img src="images/object-cover-02.jpg" alt="Object 02">
+    <div class="project-meta">
+      <h2>Object 02</h2>
+      <span>Objects</span>
     </div>
   </a>
 
-  <a href="illustration-01.html" class="project-card">
-    <div class="project-image">
-      <img src="images/some-illustration.jpg" alt="Illustration 01">
-    </div>
-    <div class="project-info">
-      <h3>Illustration 01</h3>
-      <p>Illustration</p>
+  <a href="project-object-03.html" class="project-card">
+    <img src="images/object-cover-03.jpg" alt="Object 03">
+    <div class="project-meta">
+      <h2>Object 03</h2>
+      <span>Objects</span>
     </div>
   </a>
 
-  <a href="uiux-01.html" class="project-card">
-    <div class="project-image">
-      <img src="images/some-uiux.jpg" alt="UI/UX 01">
-    </div>
-    <div class="project-info">
-      <h3>UI/UX 01</h3>
-      <p>UI/UX</p>
+  <a href="project-object-04.html" class="project-card">
+    <img src="images/object-cover-04.jpg" alt="Object 04">
+    <div class="project-meta">
+      <h2>Object 04</h2>
+      <span>Objects</span>
     </div>
   </a>
 
-</section>
+  <a href="project-jewelry.html" class="project-card">
+    <img src="images/jewelry-01.jpg" alt="Jewelry">
+    <div class="project-meta">
+      <h2>Jewelry</h2>
+      <span>Collection</span>
+    </div>
+  </a>
 
-<!-- Back button -->
-<div class="project-back-container">
-  <a href="index.html" class="back-link">← Back to Home</a>
-</div>
+  <a href="project-paintings.html" class="project-card">
+    <img src="images/object-cover-01.jpg" alt="Paintings">
+    <div class="project-meta">
+      <h2>Paintings</h2>
+      <span>Works</span>
+    </div>
+  </a>
+
+</main>
 
 </body>
 </html>
