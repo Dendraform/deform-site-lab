@@ -141,6 +141,23 @@ html, body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* размер карточек как у "друга" */
+.projects-page .project-card {
+  grid-column: span 4;
+}
+@media (max-width: 1000px) {
+  .projects-page .project-card {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-page .project-card {
+    grid-column: span 12;
+  }
+}
+
+
 .projects-page .project-card:hover {
   transform: scale(1.03);
   box-shadow: 0 10px 30px rgba(255,255,255,0.1);
@@ -254,4 +271,5 @@ html, body {
 .projects-page .project-card:hover img {
   transform: scale(1.05);
 }
+
 
