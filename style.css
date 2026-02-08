@@ -177,7 +177,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 40px;
-  margin: 80px 40px;
+  padding: 80px 40px;
 }
 
 /* Базовая карточка */
@@ -254,3 +254,4 @@ html, body {
 .projects-page .project-card:hover img {
   transform: scale(1.05);
 }
+
