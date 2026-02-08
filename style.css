@@ -120,6 +120,35 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
+/* Topbar */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 10;
+  background: #111;
+}
+
+.logo {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+.menu a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Projects Grid */
 .projects-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -173,6 +202,3 @@ html, body {
   font-size: 0.9rem;
   opacity: 0.7;
 }
-
-
-
