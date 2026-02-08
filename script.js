@@ -9,6 +9,7 @@ function show(next) {
   items[index].classList.remove('active');
   items[index].classList.add('exit');
 
+  // Зацикливание
   index = (next + items.length) % items.length;
 
   items[index].classList.add('active');
@@ -19,7 +20,7 @@ function show(next) {
   }, 900);
 }
 
-// Клики по стрелкам
+// Стрелки
 document.querySelector('.arrow.down').onclick = () => show(index + 1);
 document.querySelector('.arrow.up').onclick = () => show(index - 1);
 
@@ -31,12 +32,14 @@ window.addEventListener(
     e.preventDefault();
     if (wheelLock) return;
     wheelLock = true;
+
     if (e.deltaY > 0) {
       show(index + 1);
     } else {
       show(index - 1);
     }
-    setTimeout(() => { wheelLock = false; }, 1000);
+
+    setTimeout(() => (wheelLock = false), 1000);
   },
   { passive: false }
 );
