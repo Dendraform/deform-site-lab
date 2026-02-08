@@ -1,83 +1,105 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Dendraform — Projects</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="projects-page">
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-<header class="topbar">
-  <div class="logo">dendraform</div>
-  <nav class="menu">
-    <a href="index.html">Home</a>
-  </nav>
-</header>
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
 
-<main class="projects-list">
+/* TOP BAR */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: #111;
+  z-index: 10;
+}
 
-  <a href="project-object-01.html" class="project-card">
-    <div class="project-image">
-      <img src="images/object-cover-01.jpg" alt="Object 01">
-    </div>
-    <div class="project-meta">
-      <h2>Object 01</h2>
-      <span>Objects</span>
-    </div>
-  </a>
+.logo {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
-  <a href="project-object-02.html" class="project-card">
-    <div class="project-image">
-      <img src="images/object-cover-02.jpg" alt="Object 02">
-    </div>
-    <div class="project-meta">
-      <h2>Object 02</h2>
-      <span>Objects</span>
-    </div>
-  </a>
+.menu a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
 
-  <a href="project-object-03.html" class="project-card">
-    <div class="project-image">
-      <img src="images/object-cover-03.jpg" alt="Object 03">
-    </div>
-    <div class="project-meta">
-      <h2>Object 03</h2>
-      <span>Objects</span>
-    </div>
-  </a>
+/* Стили для страницы Projects */
+.projects-page {
+  padding-top: 80px; /* чтобы topbar не перекрывал */
+  background: #000;
+}
 
-  <a href="project-object-04.html" class="project-card">
-    <div class="project-image">
-      <img src="images/object-cover-04.jpg" alt="Object 04">
-    </div>
-    <div class="project-meta">
-      <h2>Object 04</h2>
-      <span>Objects</span>
-    </div>
-  </a>
+/* Сетка проектов */
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
 
-  <a href="project-jewelry.html" class="project-card">
-    <div class="project-image">
-      <img src="images/jewelry-01.jpg" alt="Jewelry">
-    </div>
-    <div class="project-meta">
-      <h2>Jewelry</h2>
-      <span>Collection</span>
-    </div>
-  </a>
+/* Карточка проекта */
+.project-card {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid #222;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
 
-  <a href="project-paintings.html" class="project-card">
-    <div class="project-image">
-      <img src="images/paintings.jpg" alt="Paintings">
-    </div>
-    <div class="project-meta">
-      <h2>Paintings</h2>
-      <span>Works</span>
-    </div>
-  </a>
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
 
-</main>
+/* Обложка проекта */
+.project-image {
+  width: 100%;
+  height: 0;
+  padding-bottom: 66%; /* соотношение 3:2 */
+  overflow: hidden;
+}
 
-</body>
-</html>
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Текст проекта */
+.project-meta {
+  padding: 12px;
+  text-align: center;
+}
+
+.project-meta h2 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.project-meta span {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
