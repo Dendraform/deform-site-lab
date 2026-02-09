@@ -383,18 +383,45 @@ body { transform: none !important; }
   opacity: 1 !important;
   background-image: initial !important;
 }
-/* Lightbox — принудительно показать крестик и стрелки */
-.lb-close, .lb-prev, .lb-next {
-  display: block !important;
-  opacity: 1 !important;
-  z-index: 9999 !important;
-  background: rgba(0,0,0,0.5) !important;
+/* =========================
+   Lightbox — принудительно показать крестик и стрелки
+========================= */
+
+/* Контейнеры Lightbox поверх всего */
+.lb-outerContainer,
+.lb-container,
+.lb-image {
+  position: fixed !important;
+  z-index: 99999 !important; /* точно поверх всего */
 }
 
-.lb-prev:before, .lb-next:before, .lb-close:before {
-  color: #fff !important;
-  font-size: 36px !important;
+/* Крестик и стрелки видимые */
+.lb-close,
+.lb-prev,
+.lb-next {
+  display: block !important;
+  opacity: 1 !important;
+  z-index: 100000 !important;
+  pointer-events: auto !important;
+  background: rgba(0, 0, 0, 0.5) !important; /* тёмный полупрозрачный фон */
 }
+
+/* Цвет и размер символов */
+.lb-prev:before,
+.lb-next:before,
+.lb-close:before {
+  color: #fff !important;
+  font-size: 40px !important;
+  text-shadow: 0 0 8px rgba(0,0,0,0.7); /* светящийся контур */
+}
+
+/* Подписи и номера фото */
+.lb-number,
+.lb-data .lb-caption {
+  color: #fff
+
+}
+
 
 
 
