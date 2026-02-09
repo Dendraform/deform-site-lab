@@ -376,5 +376,15 @@ html, body {
 }
 body { transform: none !important; }
 
+.lb-close,
+.lb-prev,
+.lb-next {
+  display: block !important;
+  opacity: 1 !important;
+  background-image: initial !important;
+}
+
+
+
 
 
