@@ -365,6 +365,17 @@ html, body {
 /* =========================
    SINGLE PROJECT GALLERY
 ========================= */
+.project-item {
+  overflow: hidden;
+}
+
+.project-item img {
+  transition: transform 0.8s ease;
+}
+
+.project-item:hover img {
+  transform: scale(1.08);
+}
 
 .project-layout {
   padding-top: 80px; /* чтобы не залезало под topbar */
@@ -416,6 +427,7 @@ html, body {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
+
 
 
 
