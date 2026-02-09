@@ -4,24 +4,51 @@
   <meta charset="UTF-8">
   <title>Object 01 — Dendraform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="stylesheet" href="style.css">
-  
-    <link
+
+  <!-- Lightbox CSS -->
+  <link
     href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"
     rel="stylesheet">
 
+  <!-- Кастомные стили для галереи и Lightbox -->
   <style>
+    /* Стили для белых стрелок и крестика Lightbox */
+    .lb-data .lb-close {
+      color: #fff !important;
+      opacity: 1 !important;
+    }
+
+    .lb-prev, .lb-next {
+      background: rgba(255,255,255,0.1) !important;
+    }
+
+    .lb-prev:hover, .lb-next:hover {
+      background: rgba(255,255,255,0.3) !important;
+    }
+
+    .lb-prev:before, .lb-next:before {
+      color: #fff !important;
+      font-size: 30px;
+    }
+
+    .lb-number {
+      color: #fff !important;
+    }
+
+    .lb-data .lb-caption {
+      color: #fff !important;
+    }
 
     /* PROJECT SINGLE PAGE */
     .project-layout {
-      padding-top: 80px; /* чтобы topbar не залезал */
+      padding-top: 80px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Сетка галереи */
     .project-gallery {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -31,11 +58,10 @@
       box-sizing: border-box;
     }
 
-    /* Один элемент галереи */
     .project-item {
       position: relative;
       overflow: hidden;
-      grid-column: span 4; /* крупные плитки */
+      grid-column: span 4;
     }
 
     .project-item img {
@@ -46,12 +72,10 @@
       transition: transform 0.8s ease;
     }
 
-    /* hover-zoom без ломки сетки */
     .project-item:hover img {
       transform: scale(1.08);
     }
 
-    /* Адаптив */
     @media (max-width: 1000px) {
       .project-item {
         grid-column: span 6;
@@ -64,7 +88,6 @@
       }
     }
 
-    /* Отступы для текста */
     .project-description {
       max-width: 1200px;
       margin: 20px auto 60px;
@@ -89,8 +112,8 @@
       line-height: 1.5;
     }
   </style>
-</head>
 
+</head>
 <body class="project-single">
 
 <header class="topbar">
@@ -106,27 +129,25 @@
   <!-- Галерея проекта -->
   <section class="project-gallery">
 
-<div class="project-item"><a href="images/object-01-01.jpg" data-lightbox="object01"><img src="images/object-01-01.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-02.jpg" data-lightbox="object01"><img src="images/object-01-02.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-03.jpg" data-lightbox="object01"><img src="images/object-01-03.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-04.jpg" data-lightbox="object01"><img src="images/object-01-04.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-05.jpg" data-lightbox="object01"><img src="images/object-01-05.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-06.jpg" data-lightbox="object01"><img src="images/object-01-06.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-07.jpg" data-lightbox="object01"><img src="images/object-01-07.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-08.jpg" data-lightbox="object01"><img src="images/object-01-08.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-09.jpg" data-lightbox="object01"><img src="images/object-01-09.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-10.jpg" data-lightbox="object01"><img src="images/object-01-10.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-11.jpg" data-lightbox="object01"><img src="images/object-01-11.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-12.jpg" data-lightbox="object01"><img src="images/object-01-12.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-13.jpg" data-lightbox="object01"><img src="images/object-01-13.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-14.jpg" data-lightbox="object01"><img src="images/object-01-14.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-15.jpg" data-lightbox="object01"><img src="images/object-01-15.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-16.jpg" data-lightbox="object01"><img src="images/object-01-16.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-17.jpg" data-lightbox="object01"><img src="images/object-01-17.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-18.jpg" data-lightbox="object01"><img src="images/object-01-18.jpg" alt="Object 01"></a></div>
-<div class="project-item"><a href="images/object-01-19.jpg" data-lightbox="object01"><img src="images/object-01-19.jpg" alt="Object 01"></a></div>
-
-
+    <div class="project-item"><a href="images/object-01-01.jpg" data-lightbox="object01"><img src="images/object-01-01.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-02.jpg" data-lightbox="object01"><img src="images/object-01-02.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-03.jpg" data-lightbox="object01"><img src="images/object-01-03.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-04.jpg" data-lightbox="object01"><img src="images/object-01-04.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-05.jpg" data-lightbox="object01"><img src="images/object-01-05.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-06.jpg" data-lightbox="object01"><img src="images/object-01-06.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-07.jpg" data-lightbox="object01"><img src="images/object-01-07.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-08.jpg" data-lightbox="object01"><img src="images/object-01-08.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-09.jpg" data-lightbox="object01"><img src="images/object-01-09.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-10.jpg" data-lightbox="object01"><img src="images/object-01-10.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-11.jpg" data-lightbox="object01"><img src="images/object-01-11.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-12.jpg" data-lightbox="object01"><img src="images/object-01-12.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-13.jpg" data-lightbox="object01"><img src="images/object-01-13.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-14.jpg" data-lightbox="object01"><img src="images/object-01-14.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-15.jpg" data-lightbox="object01"><img src="images/object-01-15.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-16.jpg" data-lightbox="object01"><img src="images/object-01-16.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-17.jpg" data-lightbox="object01"><img src="images/object-01-17.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-18.jpg" data-lightbox="object01"><img src="images/object-01-18.jpg" alt="Object 01"></a></div>
+    <div class="project-item"><a href="images/object-01-19.jpg" data-lightbox="object01"><img src="images/object-01-19.jpg" alt="Object 01"></a></div>
 
   </section>
 
@@ -138,12 +159,13 @@
     <p>
       Object 01 explores material tension, balance and form.
       The project focuses on raw textures and sculptural presence.
-      Each piece is carefully composed to fill the space and interact with light.
+      Each piece is carefully composed to fill the space и interact with light.
     </p>
   </aside>
 
 </main>
 
+<!-- Lightbox JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
 </body>
