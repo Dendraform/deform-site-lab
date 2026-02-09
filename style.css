@@ -361,3 +361,18 @@ html, body {
     grid-column: span 12;
   }
 }
+.lb-outerContainer,
+.lb-container,
+.lb-image {
+  z-index: 9998 !important;
+}
+
+.lb-data,
+.lb-close,
+.lb-prev,
+.lb-next {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+
