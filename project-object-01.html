@@ -5,6 +5,83 @@
   <title>Object 01 — Dendraform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* PROJECT SINGLE PAGE */
+    .project-layout {
+      padding-top: 80px; /* чтобы topbar не залезал */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Сетка галереи */
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      width: 100%;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    /* Один элемент галереи */
+    .project-item {
+      position: relative;
+      overflow: hidden;
+      grid-column: span 4; /* крупные плитки */
+    }
+
+    .project-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    /* hover-zoom без ломки сетки */
+    .project-item:hover img {
+      transform: scale(1.08);
+    }
+
+    /* Адаптив */
+    @media (max-width: 1000px) {
+      .project-item {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .project-item {
+        grid-column: span 12;
+      }
+    }
+
+    /* Отступы для текста */
+    .project-description {
+      max-width: 1200px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .project-description h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .project-description .project-category {
+      font-size: 1rem;
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+
+    .project-description p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 
 <body class="project-single">
@@ -20,32 +97,29 @@
 <main class="project-layout">
 
   <!-- Галерея проекта -->
-<section class="project-gallery">
+  <section class="project-gallery">
 
-  <div class="project-item"><img src="images/object-01-01.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-02.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-03.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-04.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-05.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-06.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-07.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-08.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-09.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-10.jpg" alt=""></div>
+    <div class="project-item"><img src="images/object-01-01.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-02.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-03.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-04.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-05.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-06.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-07.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-08.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-09.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-10.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-11.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-12.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-13.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-14.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-15.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-16.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-17.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-18.jpg" alt="Object 01"></div>
+    <div class="project-item"><img src="images/object-01-19.jpg" alt="Object 01"></div>
 
-  <div class="project-item"><img src="images/object-01-11.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-12.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-13.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-14.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-15.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-16.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-17.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-18.jpg" alt=""></div>
-  <div class="project-item"><img src="images/object-01-19.jpg" alt=""></div>
-
-</section>
-
-
+  </section>
 
   <!-- Описание -->
   <aside class="project-description">
@@ -55,6 +129,7 @@
     <p>
       Object 01 explores material tension, balance and form.
       The project focuses on raw textures and sculptural presence.
+      Each piece is carefully composed to fill the space and interact with light.
     </p>
   </aside>
 
@@ -62,4 +137,3 @@
 
 </body>
 </html>
-
