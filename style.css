@@ -375,7 +375,11 @@ html, body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 24px;
-  padding: 40px;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+
+  padding: 40px 60px;
 }
 
 /* Один элемент галереи */
@@ -389,7 +393,7 @@ html, body {
 
 /* Обертка через grid-span */
 .project-gallery img {
-  grid-column: span 6;
+  grid-column: span 4;
 }
 
 /* hover-zoom без ломки сетки */
@@ -408,6 +412,12 @@ html, body {
   .project-gallery img:nth-child(3n) {
    grid-column: span 12;
 }
+  .project-gallery {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+
 
 
 
