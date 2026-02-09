@@ -14,32 +14,35 @@
 
   <!-- Кастомные стили для галереи и Lightbox -->
   <style>
-    /* Стили для белых стрелок и крестика Lightbox */
-    .lb-data .lb-close {
-      color: #fff !important;
-      opacity: 1 !important;
-    }
+/* Lightbox2 — видимость крестика и стрелок */
+.lb-data .lb-close {
+  color: #fff !important;       /* белый крестик */
+  opacity: 1 !important;        /* полностью видимый */
+  font-size: 32px !important;   /* чуть больше */
+}
 
-    .lb-prev, .lb-next {
-      background: rgba(255,255,255,0.1) !important;
-    }
+.lb-prev, .lb-next {
+  background: rgba(0,0,0,0.4) !important; /* тёмный полупрозрачный фон */
+  width: 60px !important;                   /* достаточно большой блок */
+  height: 100% !important;
+}
 
-    .lb-prev:hover, .lb-next:hover {
-      background: rgba(255,255,255,0.3) !important;
-    }
+.lb-prev:hover, .lb-next:hover {
+  background: rgba(0,0,0,0.6) !important;  /* подсветка при hover */
+}
 
-    .lb-prev:before, .lb-next:before {
-      color: #fff !important;
-      font-size: 30px;
-    }
+.lb-prev:before, .lb-next:before {
+  color: #fff !important; /* стрелки белые */
+  font-size: 40px !important;
+}
 
-    .lb-number {
-      color: #fff !important;
-    }
+.lb-number {
+  color: #fff !important; /* номер фото белый */
+}
 
-    .lb-data .lb-caption {
-      color: #fff !important;
-    }
+.lb-data .lb-caption {
+  color: #fff !important; /* подписи белые */
+}
 
     /* PROJECT SINGLE PAGE */
     .project-layout {
