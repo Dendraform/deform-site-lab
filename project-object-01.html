@@ -192,30 +192,21 @@ images.forEach((link, idx) => {
     e.preventDefault();
     current = idx;
     modalImg.src = link.href;
-    modal.style.display = 'flex';           // сначала показываем элемент
-    requestAnimationFrame(() => {
-      modal.classList.add('show');          // анимация через класс
-    });
+    modal.classList.add('show'); // сразу добавляем класс
   });
 });
 
 document.querySelector('.modal-close').addEventListener('click', () => {
-  modal.classList.remove('show');           // старт анимации скрытия
-  setTimeout(() => {
-    modal.style.display = 'none';           // скрываем после анимации
-  }, 350);
+  modal.classList.remove('show');
 });
-
 document.querySelector('.modal-prev').addEventListener('click', () => {
   current = (current - 1 + images.length) % images.length;
   modalImg.src = images[current].href;
 });
-
 document.querySelector('.modal-next').addEventListener('click', () => {
   current = (current + 1) % images.length;
   modalImg.src = images[current].href;
 });
-
 </script>
 
 
