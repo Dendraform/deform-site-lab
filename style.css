@@ -480,26 +480,63 @@ body { transform: none !important; }
 .modal-next { right: 30px; top: 50%; transform: translateY(-50%); }
 
 
+<style>
+/* ===== Modal slide animation ===== */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  overflow: hidden;
+}
 
+.modal-img {
+  position: absolute;
+  max-width: 90%;
+  max-height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(0);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 1;
+}
 
+.modal-img.enter-left {
+  transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 0;
+}
 
+.modal-img.enter-right {
+  transform: translate(-50%, -50%) translateX(100%);
+  opacity: 0;
+}
 
+.modal-img.exit-left {
+  transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 0;
+}
 
+.modal-img.exit-right {
+  transform: translate(-50%, -50%) translateX(100%);
+  opacity: 0;
+}
 
+.modal-close,
+.modal-prev,
+.modal-next {
+  position: absolute;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.modal-close { top: 20px; right: 30px; }
+.modal-prev { left: 30px; top: 50%; transform: translateY(-50%); }
+.modal-next { right: 30px; top: 50%; transform: translateY(-50%); }
+</style>
 
