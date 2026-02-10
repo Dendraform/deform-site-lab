@@ -181,41 +181,35 @@
 <script>
 const modal = document.getElementById('modal');
 const modalImg = document.querySelector('.modal-img');
-const images = document.querySelectorAll('.project-gallery a');
+const images = document.querySelectorAll('.project-gallery img'); // теперь ищем <img>
 let current = 0;
 
-images.forEach((link, idx) => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
+images.forEach((img, idx) => {
+  img.addEventListener('click', () => {
     current = idx;
-    modalImg.src = link.href;
-
-    modal.classList.remove('show');
+    modalImg.src = img.src; // берём src картинки
+    modal.style.display = 'flex'; // сразу показываем
     requestAnimationFrame(() => {
-      modal.classList.add('show');
+      modal.classList.add('show'); // запускаем плавную анимацию
     });
   });
 });
 
 document.querySelector('.modal-close').addEventListener('click', () => {
   modal.classList.remove('show');
+  setTimeout(() => modal.style.display = 'none', 400); // скрытие после анимации
 });
 
 document.querySelector('.modal-prev').addEventListener('click', () => {
   current = (current - 1 + images.length) % images.length;
-  modalImg.src = images[current].href;
+  modalImg.src = images[current].src;
 });
 
 document.querySelector('.modal-next').addEventListener('click', () => {
-  current = (current + images.length + 1) % images.length;
-  modalImg.src = images[current].href;
+  current = (current + 1) % images.length;
+  modalImg.src = images[current].src;
 });
 </script>
-
-</script>
-
-
-
 
 </body>
 </html>
