@@ -181,7 +181,7 @@
   <span class="modal-next">&#10095;</span>
   <img class="modal-img" src="" alt="">
 </div>
-  <script>
+<script>
 const modal = document.getElementById('modal');
 const modalImg = document.querySelector('.modal-img');
 const images = document.querySelectorAll('.project-gallery a');
@@ -192,12 +192,19 @@ images.forEach((link, idx) => {
     e.preventDefault();
     current = idx;
     modalImg.src = link.href;
+
     modal.style.display = 'flex';
+    requestAnimationFrame(() => {
+      modal.classList.add('show');
+    });
   });
-});
+}); // ← ВОТ ЭТОГО НЕ ХВАТАЛО
 
 document.querySelector('.modal-close').addEventListener('click', () => {
-  modal.style.display = 'none';
+  modal.classList.remove('show');
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 350);
 });
 
 document.querySelector('.modal-prev').addEventListener('click', () => {
@@ -210,6 +217,7 @@ document.querySelector('.modal-next').addEventListener('click', () => {
   modalImg.src = images[current].href;
 });
 </script>
+
 
 
 </body>
