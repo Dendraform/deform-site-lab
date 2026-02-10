@@ -454,24 +454,23 @@ body { transform: none !important; }
 .modal-prev { left: 30px; top: 50%; transform: translateY(-50%); }
 .modal-next { right: 30px; top: 50%; transform: translateY(-50%); }
 
-/* ===== Modal animations ===== */
-
+/* ===== Modal gallery (новый вариант) ===== */
 .modal {
-  display: flex;                 /* элемент всегда есть */
+  display: flex;                 /* элемент всегда есть, не display:none */
   justify-content: center;
   align-items: center;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.85);
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none;          /* чтобы не мешал кликам, когда скрыт */
   transition: opacity 0.35s ease;
   z-index: 9999;
 }
 
 .modal.show {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto;          /* теперь клики активны */
 }
 
 .modal-img {
@@ -489,7 +488,7 @@ body { transform: none !important; }
 .modal-next,
 .modal-close {
   opacity: 0;
-  transition: opacity 0.35s ease 0.15s; /* появляется с небольшой задержкой */
+  transition: opacity 0.35s ease 0.15s; /* появление с небольшой задержкой */
 }
 
 .modal.show .modal-prev,
@@ -497,6 +496,7 @@ body { transform: none !important; }
 .modal.show .modal-close {
   opacity: 1;
 }
+
 
 
 
