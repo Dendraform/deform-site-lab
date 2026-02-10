@@ -181,6 +181,36 @@
   <span class="modal-next">&#10095;</span>
   <img class="modal-img" src="" alt="">
 </div>
+  <script>
+const modal = document.getElementById('modal');
+const modalImg = document.querySelector('.modal-img');
+const images = document.querySelectorAll('.project-gallery a');
+let current = 0;
+
+images.forEach((link, idx) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    current = idx;
+    modalImg.src = link.href;
+    modal.style.display = 'flex';
+  });
+});
+
+document.querySelector('.modal-close').addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+document.querySelector('.modal-prev').addEventListener('click', () => {
+  current = (current - 1 + images.length) % images.length;
+  modalImg.src = images[current].href;
+});
+
+document.querySelector('.modal-next').addEventListener('click', () => {
+  current = (current + 1) % images.length;
+  modalImg.src = images[current].href;
+});
+</script>
+
 
 </body>
 </html>
