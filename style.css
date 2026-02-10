@@ -457,14 +457,22 @@ body { transform: none !important; }
 /* ===== Modal animations ===== */
 
 .modal {
+  display: flex;       /* элемент всегда есть */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.35s ease;
+  z-index: 9999;
 }
 
 .modal.show {
   opacity: 1;
+  pointer-events: auto;
 }
-
 
 .modal-img {
   transform: scale(0.96);
@@ -491,6 +499,7 @@ body { transform: none !important; }
 .modal.show .modal-close {
   opacity: 1;
 }
+
 
 
 
