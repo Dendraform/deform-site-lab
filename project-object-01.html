@@ -181,35 +181,63 @@
 <script>
 const modal = document.getElementById('modal');
 const modalImg = document.querySelector('.modal-img');
-const images = document.querySelectorAll('.project-gallery img'); // теперь ищем <img>
+const images = document.querySelectorAll('.project-gallery img');
 let current = 0;
 
-images.forEach((img, idx) => {
-  img.addEventListener('click', () => {
-    current = idx;
-    modalImg.src = img.src; // берём src картинки
-    modal.style.display = 'flex'; // сразу показываем
+// открыть модалку
+function openModal(idx) {
+  current = idx;
+  modalImg.src = images[current].src;
+  modal.style.display = 'flex';
+}
+
+// функция слайд-анимации
+function slideTo(idx) {
+  const newSrc = images[idx].src;
+  const direction = idx > current || (current === images.length - 1 && idx === 0) ? 'right' : 'left';
+
+  modalImg.classList.add(direction === 'right' ? 'exit-left' : 'exit-right');
+
+  modalImg.addEventListener('transitionend', function handler() {
+    modalImg.removeEventListener('transitionend', handler);
+
+    modalImg.src = newSrc;
+    modalImg.classList.remove('exit-left', 'exit-right');
+    modalImg.classList.add(direction === 'right' ? 'enter-right' : 'enter-left');
+
     requestAnimationFrame(() => {
-      modal.classList.add('show'); // запускаем плавную анимацию
+      modalImg.classList.remove('enter-left', 'enter-right');
     });
+
+    current = idx;
+  });
+}
+
+// галерея
+images.forEach((img, idx) => {
+  img.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal(idx);
   });
 });
 
-document.querySelector('.modal-close').addEventListener('click', () => {
-  modal.classList.remove('show');
-  setTimeout(() => modal.style.display = 'none', 400); // скрытие после анимации
-});
-
+// кнопки
 document.querySelector('.modal-prev').addEventListener('click', () => {
-  current = (current - 1 + images.length) % images.length;
-  modalImg.src = images[current].src;
+  const idx = (current - 1 + images.length) % images.length;
+  slideTo(idx);
 });
 
 document.querySelector('.modal-next').addEventListener('click', () => {
-  current = (current + 1) % images.length;
-  modalImg.src = images[current].src;
+  const idx = (current + 1) % images.length;
+  slideTo(idx);
+});
+
+// закрытие
+document.querySelector('.modal-close').addEventListener('click', () => {
+  modal.style.display = 'none';
 });
 </script>
+ 
 
 </body>
 </html>
