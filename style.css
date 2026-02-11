@@ -477,5 +477,18 @@ body { transform: none !important; }
   }
 }
 
+.projects-list .project-card {
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.projects-list .project-card.current {
+  opacity: 1;
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+
+
 
 
