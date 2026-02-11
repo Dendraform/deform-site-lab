@@ -592,6 +592,73 @@ body { transform: none !important; }
   z-index: 2;
 }
 
+/* =========================================
+   MOBILE FIX — полностью перезаписываем
+========================================= */
+@media (max-width: 800px) {
+
+  /* Убираем лишние внешние отступы */
+  .projects-page {
+    padding-top: 70px;
+  }
+
+  /* Полный сброс сетки */
+  .projects-page .projects-list {
+    display: flex;              /* вместо grid */
+    flex-direction: column;     /* строго одна колонка */
+    gap: 10px;                  /* компактный отступ */
+    padding: 0 10px;            /* минимальные края */
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Карточка */
+  .projects-page .project-card,
+  .projects-page .project-card.large,
+  .projects-page .project-card.small {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* Изображение — компактное */
+  .projects-page .project-image {
+    padding-bottom: 60%;
+  }
+
+  /* Текст делаем НОРМАЛЬНЫМ, не абсолютным */
+  .projects-page .project-meta {
+    position: relative;   /* ключевое изменение */
+    left: auto;
+    bottom: auto;
+    right: auto;
+    padding: 12px;
+    text-align: left;
+  }
+
+  .projects-page .project-meta h2 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .projects-page .project-meta span {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+
+  /* Убираем hover-эффекты на телефоне */
+  .projects-page .project-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .projects-page .project-card::after {
+    display: none;
+  }
+
+}
+
+
+
 
 
 
