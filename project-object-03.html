@@ -2,11 +2,10 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Object 03 — Dendraform</title>
+  <title>Object 04 — Dendraform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Кастомные стили галереи и модального окна -->
   <style>
     /* PROJECT SINGLE PAGE */
     .project-layout {
@@ -43,12 +42,8 @@
       transform: scale(1.08);
     }
 
-    @media (max-width: 1000px) {
-      .project-item { grid-column: span 6; }
-    }
-    @media (max-width: 600px) {
-      .project-item { grid-column: span 12; }
-    }
+    @media (max-width: 1000px) { .project-item { grid-column: span 6; } }
+    @media (max-width: 600px) { .project-item { grid-column: span 12; } }
 
     .project-description {
       max-width: 1200px;
@@ -58,15 +53,8 @@
       font-family: Arial, sans-serif;
     }
 
-    .project-description h1 {
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-    .project-description .project-category {
-      font-size: 1rem;
-      opacity: 0.7;
-      margin-bottom: 16px;
-    }
+    .project-description h1 { font-size: 2rem; margin-bottom: 8px; }
+    .project-description .project-category { font-size: 1rem; opacity: 0.7; margin-bottom: 16px; }
     .project-description p { font-size: 1rem; line-height: 1.5; }
 
     /* ===== Modal slide animation ===== */
@@ -124,23 +112,22 @@
 
   <!-- Галерея проекта -->
   <section class="project-gallery">
-    <div class="project-item"><img src="images/object-03-01.jpg" alt="Object 03" data-index="0"></div>
-    <div class="project-item"><img src="images/object-03-03.jpg" alt="Object 03" data-index="1"></div>
-    <div class="project-item"><img src="images/object-03-04.jpg" alt="Object 03" data-index="2"></div>
-    <div class="project-item"><img src="images/object-03-05.jpg" alt="Object 03" data-index="3"></div>
-    <div class="project-item"><img src="images/object-03-06.jpg" alt="Object 03" data-index="4"></div>
-    <div class="project-item"><img src="images/object-03-08.jpg" alt="Object 03" data-index="5"></div>
-    <div class="project-item"><img src="images/object-03-09.jpg" alt="Object 03" data-index="6"></div>
-    <div class="project-item"><img src="images/object-03.jpg" alt="Object 03" data-index="7"></div>
+    <div class="project-item"><img src="images/object-04-01.jpg" alt="Object 04" data-index="0"></div>
+    <div class="project-item"><img src="images/object-04-02.jpg" alt="Object 04" data-index="1"></div>
+    <div class="project-item"><img src="images/object-04-03.jpg" alt="Object 04" data-index="2"></div>
+    <div class="project-item"><img src="images/object-04-05.jpg" alt="Object 04" data-index="3"></div>
+    <div class="project-item"><img src="images/object-04-06.jpg" alt="Object 04" data-index="4"></div>
+    <div class="project-item"><img src="images/object-04-07.jpg" alt="Object 04" data-index="5"></div>
+    <div class="project-item"><img src="images/object-04.jpg" alt="Object 04" data-index="6"></div>
   </section>
 
   <!-- Описание -->
   <aside class="project-description">
-    <h1>Object 03</h1>
+    <h1>Object 04</h1>
     <p class="project-category">Objects</p>
     <p>
-      Object 03 explores material tension, balance, and sculptural forms.
-      Each piece is composed to interact with light and space.
+      Object 04 explores experimental forms, textures, and spatial balance.
+      Each composition is designed to interact with light and create depth.
     </p>
   </aside>
 
@@ -201,3 +188,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
