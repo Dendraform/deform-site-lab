@@ -237,50 +237,41 @@ document.addEventListener("DOMContentLoaded", function () {
     current = idx;
     modalImg.src = images[current].src;
     modal.style.display = 'flex';
-    modalImg.classList.remove('enter-left','enter-right','exit-left','exit-right');
+    modalImg.classList.remove('enter-up','enter-down','exit-up','exit-down');
   }
 
-function slideTo(idx) {
-  if (idx === current) return;
+  function slideTo(idx) {
+    if (idx === current) return;
 
-  const newSrc = images[idx].src;
-  const direction = idx > current ? 'right' : 'left';
+    const newSrc = images[idx].src;
+    const direction = idx > current ? 'up' : 'down';
 
-  // СБРОС классов
-  modalImg.classList.remove(
-    'enter-left','enter-right',
-    'exit-left','exit-right'
-  );
+    // Сброс классов
+    modalImg.classList.remove('enter-up','enter-down','exit-up','exit-down');
 
-  // Запускаем выход
-  modalImg.classList.add(
-    direction === 'right' ? 'exit-left' : 'exit-right'
-  );
+    // Анимация выхода
+    modalImg.classList.add(direction === 'up' ? 'exit-down' : 'exit-up');
 
-  modalImg.addEventListener('transitionend', function handler(e) {
-    if (e.propertyName !== 'transform') return;
-    modalImg.removeEventListener('transitionend', handler);
+    modalImg.addEventListener('transitionend', function handler(e) {
+      if (e.propertyName !== 'transform') return;
+      modalImg.removeEventListener('transitionend', handler);
 
-    modalImg.src = newSrc;
+      modalImg.src = newSrc;
 
-    modalImg.classList.remove('exit-left','exit-right');
-    modalImg.classList.add(
-      direction === 'right' ? 'enter-right' : 'enter-left'
-    );
+      // Анимация входа
+      modalImg.classList.remove('exit-up','exit-down');
+      modalImg.classList.add(direction === 'up' ? 'enter-up' : 'enter-down');
 
-    requestAnimationFrame(() => {
-      modalImg.classList.remove('enter-left','enter-right');
+      requestAnimationFrame(() => {
+        modalImg.classList.remove('enter-up','enter-down');
+      });
+
+      current = idx;
     });
-
-    current = idx;
-  });
-}
-
+  }
 
   images.forEach((img, idx) => {
-    img.addEventListener('click', () => {
-      openModal(idx);
-    });
+    img.addEventListener('click', () => openModal(idx));
   });
 
   prevBtn.addEventListener('click', () => {
@@ -299,6 +290,7 @@ function slideTo(idx) {
 
 });
 </script>
+
 
  
 
