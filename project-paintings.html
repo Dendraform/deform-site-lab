@@ -2,11 +2,36 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Object 01 — Dendraform</title>
+  <title>Paintings — Dendraform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-</head>
 
+  <style>
+    .project-layout { padding-top: 80px; display: flex; flex-direction: column; align-items: center; }
+    .project-gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; width: 100%; padding: 40px; box-sizing: border-box; }
+    .project-item { position: relative; overflow: hidden; grid-column: span 4; }
+    .project-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s ease; }
+    .project-item:hover img { transform: scale(1.08); }
+    @media (max-width:1000px){ .project-item{grid-column:span 6;} }
+    @media (max-width:600px){ .project-item{grid-column:span 12;} }
+    .project-description { max-width:1200px; margin:20px auto 60px; padding:0 20px; color:#fff; font-family:Arial,sans-serif; }
+    .project-description h1 { font-size:2rem; margin-bottom:8px; }
+    .project-description .project-category { font-size:1rem; opacity:0.7; margin-bottom:16px; }
+    .project-description p { font-size:1rem; line-height:1.5; }
+
+    /* ===== Modal ===== */
+    .modal { display:none; justify-content:center; align-items:center; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; overflow:hidden; }
+    .modal-img { position:absolute; max-width:90%; max-height:90%; top:50%; left:50%; transform:translate(-50%,-50%) translateX(0); transition: transform 0.4s ease, opacity 0.4s ease; opacity:1; }
+    .modal-img.enter-up{ transform:translate(-50%,100%); opacity:0; }
+    .modal-img.enter-down{ transform:translate(-50%,-100%); opacity:0; }
+    .modal-img.exit-up{ transform:translate(-50%,-100%); opacity:0; }
+    .modal-img.exit-down{ transform:translate(-50%,100%); opacity:0; }
+    .modal-close,.modal-prev,.modal-next{ position:absolute; color:#fff; font-size:2rem; cursor:pointer; user-select:none; z-index:10; }
+    .modal-close{ top:20px; right:30px; }
+    .modal-prev{ left:30px; top:50%; transform:translateY(-50%); }
+    .modal-next{ right:30px; top:50%; transform:translateY(-50%); }
+  </style>
+</head>
 <body class="project-single">
 
 <header class="topbar">
@@ -19,28 +44,53 @@
 
 <main class="project-layout">
 
-  <!-- Галерея проекта -->
+  <!-- Галерея -->
   <section class="project-gallery">
-
-    <img src="images/object-01-01.jpg" alt="Object 01">
-    <img src="images/object-01-02.jpg" alt="Object 01">
-    <img src="images/object-01-03.jpg" alt="Object 01">
-
+    <div class="project-item"><img src="images/paintings-cover.jpg" alt="Paintings" data-index="0"></div>
+    <div class="project-item"><img src="images/paintings-01.jpg" alt="Paintings" data-index="1"></div>
+    <div class="project-item"><img src="images/paintings-02.jpg" alt="Paintings" data-index="2"></div>
+    <div class="project-item"><img src="images/paintings-03.jpg" alt="Paintings" data-index="3"></div>
+    <div class="project-item"><img src="images/paintings-04.jpg" alt="Paintings" data-index="4"></div>
   </section>
 
   <!-- Описание -->
   <aside class="project-description">
-    <h1>Object 01</h1>
-    <p class="project-category">Objects</p>
-
+    <h1>Paintings</h1>
+    <p class="project-category">Paintings</p>
     <p>
-      Object 01 explores material tension, balance and form.
-      The project focuses on raw textures and sculptural presence.
+      This painting collection focuses on texture, color, and spatial composition.
+      Each piece invites the viewer to explore the interplay of light and form.
     </p>
   </aside>
 
 </main>
 
+<!-- Modal -->
+<div id="modal" class="modal">
+  <span class="modal-close">&times;</span>
+  <span class="modal-prev">&#10094;</span>
+  <span class="modal-next">&#10095;</span>
+  <img class="modal-img" src="" alt="">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const modal = document.getElementById('modal');
+  const modalImg = document.querySelector('.modal-img');
+  const images = document.querySelectorAll('.project-gallery img');
+  const prevBtn = document.querySelector('.modal-prev');
+  const nextBtn = document.querySelector('.modal-next');
+  const closeBtn = document.querySelector('.modal-close');
+  let current=0;
+
+  function openModal(idx){ current=idx; modalImg.src=images[current].src; modal.style.display='flex'; modalImg.classList.remove('enter-up','enter-down','exit-up','exit-down'); }
+  function slideTo(idx){ if(idx===current)return; const newSrc=images[idx].src; const direction=idx>current?'down':'up'; modalImg.classList.remove('enter-up','enter-down','exit-up','exit-down'); modalImg.classList.add(direction==='down'?'exit-up':'exit-down'); modalImg.addEventListener('transitionend',function handler(e){ if(e.propertyName!=='transform')return; modalImg.removeEventListener('transitionend',handler); modalImg.src=newSrc; modalImg.classList.remove('exit-up','exit-down'); modalImg.classList.add(direction==='down'?'enter-down':'enter-up'); requestAnimationFrame(()=>{modalImg.classList.remove('enter-up','enter-down');}); current=idx;});}
+  images.forEach((img,idx)=>img.addEventListener('click',()=>openModal(idx)));
+  prevBtn.addEventListener('click',()=>slideTo((current-1+images.length)%images.length));
+  nextBtn.addEventListener('click',()=>slideTo((current+1)%images.length));
+  closeBtn.addEventListener('click',()=>modal.style.display='none');
+});
+</script>
+
 </body>
 </html>
-
