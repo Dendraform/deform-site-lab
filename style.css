@@ -124,11 +124,12 @@ html, body {
 
 .projects-page .projects-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  max-width: 1800;
-  margin: 40px auto;
-  padding: 0 60px;
+  grid-template-columns: repeat(12, 1fr); /* фиксированная 12-колоночная сетка */
+  gap: 20px;           /* отступ между карточками */
+  max-width: 100%;     /* чтобы не выходило за экран */
+  margin: 0 auto;
+  padding: 0 20px;     /* отступ слева и справа */
+  box-sizing: border-box;
 }
 
 .projects-page .project-card {
@@ -145,17 +146,24 @@ html, body {
 .projects-page .project-card {
   grid-column: span 4;
 }
-@media (max-width: 1000px) {
-  .projects-page .project-card {
-    grid-column: span 6;
+@media (max-width: 1200px) {
+  .projects-page .project-card.large { grid-column: span 6; }
+  .projects-page .project-card.small { grid-column: span 6; }
+}
+
+@media (max-width: 800px) {
+  .projects-page .projects-list {
+    grid-template-columns: 1fr; /* одна колонка на мобильном */
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .projects-page .project-card, 
+  .projects-page .project-card.large, 
+  .projects-page .project-card.small { 
+    grid-column: span 12; 
   }
 }
 
-@media (max-width: 600px) {
-  .projects-page .project-card {
-    grid-column: span 12;
-  }
-}
 
 
 .projects-page .project-card:hover {
@@ -487,6 +495,7 @@ body { transform: none !important; }
   transform: scale(1.03);
   z-index: 2;
 }
+
 
 
 
