@@ -1,82 +1,69 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Dendraform</title>
-  <meta name="description" content="Dendraform — небольшая мастерская, создающая художественные объекты из дерева вручную.">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-<body>
+/* =========================
+   About Page Styles
+========================= */
+.about-page {
+  padding-top: 100px;  /* чтобы текст не заезжал под фиксированный topbar */
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  color: #fff;
+  line-height: 1.7;
+}
 
-<!-- Верхнее меню -->
-<header class="topbar">
-  <div class="logo">
-    <a href="index.html">dendraform</a>
-  </div>
-  <nav class="menu">
-    <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
-  </nav>
-</header>
+.about-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
 
-<!-- Основной контент About -->
-<main class="about-page">
+.about-text p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
 
-  <!-- Заголовок -->
-  <section class="about-header">
-    <h1>О проекте Dendraform</h1>
-  </section>
+.about-photo {
+  margin: 40px 0;
+  text-align: center;
+}
 
-  <!-- Текстовый блок 1 -->
-  <section class="about-text">
-    <p>
-      Dendraform — это небольшая мастерская, в которой я создаю художественные объекты из дерева вручную.
-    </p>
-    <p>
-      Это не массовое производство, а внимательная работа с материалом, текстурой и природной пластикой дерева.
-    </p>
-  </section>
+.about-photo img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(255,255,255,0.1);
+}
 
-  <!-- Фото мастерской 1 -->
-  <section class="about-photo">
-    <img src="images/workshop1.jpg" alt="Мастерская Dendraform">
-  </section>
+.about-contact {
+  margin-top: 40px;
+  text-align: center;
+}
 
-  <!-- Текстовый блок 2 -->
-  <section class="about-text">
-    <p>
-      Проект родился из личного интереса к форме, структуре и живому материалу. Мне важно сохранять естественность дерева и находить в нём новые композиционные решения для интерьера.
-    </p>
-  </section>
+.about-contact a {
+  color: #fff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
 
-  <!-- Фото мастерской 2 -->
-  <section class="about-photo">
-    <img src="images/process1.jpg" alt="Рабочий процесс">
-  </section>
+.about-contact a:hover {
+  color: #aaa;
+}
 
-  <!-- Текстовый блок 3 -->
-  <section class="about-text">
-    <p>
-      Каждая работа — это эксперимент, исследование и попытка услышать материал.
-    </p>
-    <p>
-      Dendraform — это путь развития, поиска и постепенного роста.
-    </p>
-  </section>
+/* Адаптив для мобильных */
+@media (max-width: 800px) {
+  .about-page {
+    padding: 20px;
+  }
 
-  <!-- Контакт -->
-  <section class="about-contact">
-    <p>Связаться с нами: <a href="mailto:contact@dendraform.ru">contact@dendraform.ru</a></p>
-  </section>
+  .about-header h1 {
+    font-size: 2rem;
+  }
 
-</main>
+  .about-text p {
+    font-size: 1rem;
+  }
 
-<!-- Футер -->
-<footer>
-  <p>&copy; 2026 Dendraform. Все права защищены.</p>
-</footer>
-
-</body>
-</html>
+  .about-photo {
+    margin: 30px 0;
+  }
+}
